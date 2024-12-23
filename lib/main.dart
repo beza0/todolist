@@ -7,19 +7,39 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter(); // Hive'ı başlat
   await Hive.openBox('tasks'); // 'tasks' kutusunu aç
-  runApp(ToDoApp());
+  runApp(ToDoList());
 }
 
-class ToDoApp extends StatelessWidget {
+class ToDoList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'To-Do List',
+
+
       theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
-      ),
+  useMaterial3: true,
+  colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+  buttonTheme: ButtonThemeData(
+    buttonColor: Colors.teal, // buton rengi
+    textTheme: ButtonTextTheme.primary, // buton yazı rengi
+  ),
+  floatingActionButtonTheme: FloatingActionButtonThemeData(
+    backgroundColor: Colors.tealAccent, // yüzen buton rengi
+    foregroundColor: Colors.white, // yüzen buton yazı rengi
+  ),
+  scaffoldBackgroundColor: Colors.white, // arka plan rengi
+  appBarTheme: AppBarTheme(
+    backgroundColor: Colors.teal, // app bar rengi
+    titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
+  ),
+),
+
+      
+      
+      
+      
       home: ToDoHomePage(),
     );
   }
